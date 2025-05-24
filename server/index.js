@@ -6,7 +6,7 @@ import ProductRoutes from "./routes/ProductRoutes/productRoutes.js"
 import cartRoutes from "./routes/CartManagement/cartRoutes.js"
 
 const app = express();
-const port = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
@@ -18,6 +18,6 @@ app.use("/manageusers", ManageUsers)
 app.use("/manageproducts", ProductRoutes)
 app.use("/cart", cartRoutes)
 
-app.listen(port, (req, res) => {
-    console.log(`Server listening on port ${port}`);
+app.listen(PORT, (req, res) => {
+    console.log(`Server listening on port ${PORT}`);
 })
