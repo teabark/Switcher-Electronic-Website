@@ -11,7 +11,7 @@ const CheckoutPage = () => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/cart/${user._id}`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/cart/${user._id}`);
         setCartItems(res.data);
       } catch (err) {
         console.error("Failed to fetch cart items:", err);
@@ -29,7 +29,7 @@ const CheckoutPage = () => {
     try {
       setPaid(true);
       // Optional: clear cart here
-      await axios.delete(`http://localhost:5000/cart/clear/${user._id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/cart/clear/${user._id}`);
     } catch (err) {
       console.error("Error processing payment:", err);
     }

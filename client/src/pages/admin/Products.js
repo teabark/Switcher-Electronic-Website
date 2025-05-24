@@ -17,7 +17,7 @@ const Products = () => {
   // Fetch products from backend
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/manageproducts/getAll");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/manageproducts/getAll`);
       setProducts(res.data);
     } catch (err) {
       console.error("Failed to fetch products", err);
@@ -53,10 +53,10 @@ const Products = () => {
 
       if (editingId) {
         // update product
-        await axios.put(`http://localhost:5000/manageproducts/update/${editingId}`, data);
+        await axios.put(`${process.env.REACT_APP_API_URL}/manageproducts/update/${editingId}`, data);
       } else {
         // create product
-        await axios.post("http://localhost:5000/manageproducts/create", data);
+        await axios.post(`${process.env.REACT_APP_API_URL}/manageproducts/create`, data);
       }
 
       setFormData({ prodName: "", prodDesc: "", prodPrice: "", prodImg: null, category: "" });
@@ -83,7 +83,7 @@ const Products = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
-        await axios.delete(`http://localhost:5000/manageproducts/delete/${id}`);
+        await axios.delete(`${process.env.REACT_APP_API_URL}/manageproducts/delete/${id}`);
         fetchProducts();
       } catch (err) {
         console.error("Failed to delete product", err);

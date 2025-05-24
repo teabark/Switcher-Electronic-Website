@@ -19,7 +19,7 @@ const CategoryPage = () => {
     const fetchCategoryProducts = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/manageproducts/getAll"
+          `${process.env.REACT_APP_API_URL}/manageproducts/getAll`
         );
         const allProducts = res.data;
         const filtered = allProducts.filter(

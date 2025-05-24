@@ -8,7 +8,7 @@ const FeaturedProducts = () => {
   useEffect(() => {
     const fetchAndFilter = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/manageproducts/getAll');
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/manageproducts/getAll`);
         const products = res.data;
 
         const categoryMap = {};
@@ -43,7 +43,7 @@ const FeaturedProducts = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/cart/add", {
+      await axios.post(`${process.env.REACT_APP_API_URL}/cart/add`, {
         userId: user._id,
         productId,
       });

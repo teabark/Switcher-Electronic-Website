@@ -13,7 +13,7 @@ const SearchResults = () => {
   useEffect(() => {
     if (query) {
       axios
-        .get(`http://localhost:5000/manageproducts/search?q=${query}`)
+        .get(`${process.env.REACT_APP_API_URL}/manageproducts/search?q=${query}`)
         .then((res) => setResults(res.data))
         .catch((err) => console.error("Search failed:", err));
     }

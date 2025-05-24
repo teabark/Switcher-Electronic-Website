@@ -39,7 +39,7 @@ const TopNavBar = () => {
     if (!user || !user._id) return;
 
     try {
-      const res = await axios.get(`http://localhost:5000/cart/${user._id}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/cart/${user._id}`);
       setCartCount(res.data.length);
     } catch (err) {
       console.error("Failed to fetch cart count", err);

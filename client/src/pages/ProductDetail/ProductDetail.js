@@ -17,7 +17,7 @@ const ProductDetail = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/cart/add", {
+      await axios.post(`${process.env.REACT_APP_API_URL}/cart/add`, {
         userId: user._id,
         productId,
       });
@@ -32,7 +32,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/manageproducts/getAll`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/manageproducts/getAll`);
         const found = res.data.find(p => p._id === id);
         setProduct(found || null);
       } catch (err) {

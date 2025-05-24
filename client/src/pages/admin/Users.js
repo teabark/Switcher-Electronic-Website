@@ -15,7 +15,7 @@ const Users = () => {
 
   const fetchUsers = () => {
     axios
-      .get("http://localhost:5000/manageusers/getAll")
+      .get(`${process.env.REACT_APP_API_URL}/manageusers/getAll`)
       .then((res) => setUsers(res.data))
       .catch((err) => console.error("Error fetching users:", err));
   };
@@ -28,7 +28,7 @@ const Users = () => {
     e.preventDefault();
     if (isEditing) {
       axios
-        .put(`http://localhost:5000/manageusers/update/${editUserId}`, formData)
+        .put(`${process.env.REACT_APP_API_URL}/manageusers/update/${editUserId}`, formData)
         .then(() => {
           fetchUsers();
           setFormData({ f_name: "", l_name: "", email: "", password: "" });
@@ -38,7 +38,7 @@ const Users = () => {
         .catch((err) => console.error("Error updating user:", err));
     } else {
       axios
-        .post("http://localhost:5000/manageusers/create", formData)
+        .post(`${process.env.REACT_APP_API_URL}/manageusers/create`, formData)
         .then(() => {
           fetchUsers();
           setFormData({ f_name: "", l_name: "", email: "", password: "" });
@@ -61,7 +61,7 @@ const Users = () => {
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       axios
-        .delete(`http://localhost:5000/manageusers/delete/${id}`)
+        .delete(`${process.env.REACT_APP_API_URL}/manageusers/delete/${id}`)
         .then(() => fetchUsers())
         .catch((err) => console.error("Error deleting user:", err));
     }

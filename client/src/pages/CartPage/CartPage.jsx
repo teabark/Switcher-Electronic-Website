@@ -12,7 +12,7 @@ const CartPage = () => {
 
     const fetchCartItems = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/cart/${user._id}`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/cart/${user._id}`);
         setCartItems(res.data);
       } catch (err) {
         console.error("Failed to fetch cart items:", err);
@@ -24,7 +24,7 @@ const CartPage = () => {
 
   const handleDelete = async (cartItemId) => {
     try {
-      await axios.delete(`http://localhost:5000/cart/${cartItemId}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/cart/${cartItemId}`);
       setCartItems((prev) => prev.filter((item) => item._id !== cartItemId));
     } catch (err) {
       console.error("Error deleting cart item:", err);
