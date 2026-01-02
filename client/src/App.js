@@ -27,33 +27,33 @@ function App() {
     setIsAuthenticated(boolean);
   }
 
-  async function isAuth() {
-    try {
-      const token = localStorage.getItem("token");
+  // async function isAuth() {
+  //   try {
+  //     const token = localStorage.getItem("token");
 
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/auth/is-verify`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  //     const response = await fetch(
+  //       `${process.env.REACT_APP_API_URL}/auth/is-verify`,
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
 
-      const parseResponse = await response.json();
-      parseResponse === true
-        ? setIsAuthenticated(true)
-        : setIsAuthenticated(false);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  //     const parseResponse = await response.json();
+  //     parseResponse === true
+  //       ? setIsAuthenticated(true)
+  //       : setIsAuthenticated(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
-  useEffect(() => {
-    isAuth();
-  }, []);
+  // useEffect(() => {
+  //   isAuth();
+  // }, []);
 
   return (
     <Fragment>

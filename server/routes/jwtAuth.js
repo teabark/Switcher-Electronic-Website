@@ -98,13 +98,13 @@ router.post("/login", validEmail, async (req, res)=>{
     }
 });
 
-router.get("/is-verify", authorization, async (req, res)=> {
-    try{
-        res.json(true);
-    }catch(error){
-        console.log(error.message);
-        res.status(500).json("Server Error");
-    }
-});
+// router.get("/is-verify", authorization, async (req, res)=> {
+//     try{
+//         res.json(true);
+//     }catch(error){
+//         console.log(error.message);
+//         res.status(500).json("Server Error");
+//     }
+// });
 
-export default router;
+// export default router;
