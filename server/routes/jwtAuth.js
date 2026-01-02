@@ -10,7 +10,7 @@ import authorization from "../middleware/authorization.js";
 
 const router = Router();
 
-router.post("/Register", validInfo, async (req, res)=> {
+router.post("/register", validInfo, async (req, res)=> {
     try{
 
         await connectMongo();

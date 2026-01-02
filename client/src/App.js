@@ -29,10 +29,18 @@ function App() {
 
   async function isAuth() {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/is-verify`, {
-        method: "GET",
-        headers: { token: localStorage.token },
-      });
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/auth/is-verify`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const parseResponse = await response.json();
       parseResponse === true
