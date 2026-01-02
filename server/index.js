@@ -8,7 +8,12 @@ import cartRoutes from "./routes/CartManagement/cartRoutes.js"
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: "https://switcher-electronic-website-1.onrender.com",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "token"],
+}));
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -17,6 +22,11 @@ app.use("/auth", authRouter);
 app.use("/manageusers", ManageUsers)
 app.use("/manageproducts", ProductRoutes)
 app.use("/cart", cartRoutes)
+
+
+app.get("/", (req, res) => {
+  res.status(200).send("API is running 🚀");
+});
 
 app.listen(PORT, (req, res) => {
     console.log(`Server listening on port ${PORT}`);
