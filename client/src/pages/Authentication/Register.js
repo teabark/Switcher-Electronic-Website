@@ -16,10 +16,11 @@ function Register({ setAuth }) {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   }
 
-  const body = { email, f_name, l_name, password };
 
   async function onSubmitForm(e) {
     e.preventDefault();
+
+      const body = { email, f_name, l_name, password };
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/register`, {
